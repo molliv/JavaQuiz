@@ -12,6 +12,23 @@ body {
     background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(237,245,249,1) 63%);
 }
 
+nav {
+    padding: 20px;
+    background: #5486b4;
+    color: #fff;
+    border-bottom:30px #879274;
+}
+
+.timer {
+    float: right;
+    font-size: 16px;
+}
+
+.highScores {
+    float: left;
+    font-size: 16px;
+}
+
 header {
     padding: 40px;
     text-align: center;
