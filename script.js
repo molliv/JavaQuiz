@@ -48,58 +48,24 @@ var currentQuestion = 0;
 var timeLeft = 25;
 var correct;
 
-varshowQuiz = function () {
 
+function showQuestions () {
+    gameoverDiv.style.display = "none";
+    if (currentQuestionIndex === finalQuestionIndex){
+        return showScore();
+    } 
+    var currentQuestion = quizQuestions[currentQuestionIndex];
+    questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    buttonA.innerHTML = currentQuestion.choiceA;
+    buttonB.innerHTML = currentQuestion.choiceB;
+    buttonC.innerHTML = currentQuestion.choiceC;
+    buttonD.innerHTML = currentQuestion.choiceD;
+};
+
+function startQuiz () {
+    startQuizDiv.style.display="none";
+    generatequizQuestions ();
 }
-/*
-function showQuestions (questions, quizContainer) {
-    var output = []
-    var answers;
-    for (var i = 0; i < questions.length; i++) {
-        answers = [];
-        for(letter in questions [i].answers) {
-            answers.push (
-                '<label>'
-                    +'<input type="radio" name="question'+i+' " value="'+letter+'">'
-                    + letter + ': '
-                    + questions[i].answers[letter]
-                + '</label>'
-            );
-        }
-        output.push(
-			'<div class="question">' + questions[i].question + '</div>'
-			+ '<div class="answers">' + answers.join('') + '</div>'
-		);
-    }
-    quizContainer.innerHTML = output.join("");
-}
-*/
-/*
-function showResults (questions, quizContainer, resultsContainer) {
-    var answerContainers = quizContainer.querySelectorAll(".answers");
-    var userAnswer = "";
-    var numCorrect = 0;
-
-    for(var i = 0; i < questions.length; i++) {
-        userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
-        if(userAnswer === questions[i].correctAnswer) {
-            numCorrect++;
-        }
-    }
-    resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
-}
-*/
-
-submitButton.onclick = function() {
-    showResults();
-}
-/*
-start-Btn.addEventListener("click", function(){
-    startTimer();
-});
-*/
-
-
 // timer function, counting back from 25 seconds
 function countDown() {
     var counter = 25;
@@ -117,6 +83,7 @@ function countDown() {
             displayMessage();
         }
     }, 1000);
+    quizBody.style.display= "block";
 }
 
 function showScore () {
@@ -125,13 +92,105 @@ function showScore () {
     highscoreInputName.value = "";
     finalScoreEl.innerHTML = "You got " + score + " out of" + quizQuestions.length + " correct!";
 }
+
+submitScore.addEventListener("click", function highscore(){
+    if(highscoreInputName.value === "") {
+        alert("Initials can't be blank");
+        return false;
+    } else {
+        var savedHighscores = JSON.parse(localStorage.getItem("savedHighScores")) || [];
+        var currentUser = highscoreInputName.valeu.trim();
+        var crreuntHighscore = {
+            name : currentUser,
+            score : score
+        };
+        gameoverDiv.style.display = "none";
+        highscoreContainer.style.display = "flex";
+        highscoreDiv.style.display = "block";
+
+        savedHighscores.push(currentHighscore);
+        localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+        generateHighscores ();
+    }
+});
+
+function generateHighscores(){
+    highscoreDisplayName.innerHTML = "";
+    highscoreDisplayScore.innerHTML = "";
+    var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    for (i=0; i<highscores.length; i++){
+        var newNameSpan = document.createElement("li");
+        var newScoreSpan = document.createElement("li");
+        newNameSpan.textContent = highscores[i].name;
+        newScoreSpan.textContent = highscores[i].score;
+        highscoreDisplayName.appendChild(newNameSpan);
+        highscoreDisplayScore.appendChild(newScoreSpan);
+    }
+}
+
+function showHighscore(){
+    startQuizDiv.style.display = "none"
+    gameoverDiv.style.display = "none";
+    highscoreContainer.style.display = "flex";
+    highscoreDiv.style.display = "block";
+    generateHighscores();
+}
+
+function checkAnswer(answer){
+    correct = quizQuestions[currentQuestionIndex].correctAnswer;
+
+    if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
+        score++;
+        alert("That Is Correct!");
+        currentQuestionIndex++;
+        generateQuizQuestion();
+        //display in the results div that the answer is correct.
+    }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+        alert("That Is Incorrect.")
+        currentQuestionIndex++;
+        generateQuizQuestion();
+        //display in the results div that the answer is wrong.
+    }else{
+        showScore();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    startQuizBtn.addEventListener("click", startQuiz);
+});
+
+/*
+function showResults () {
+    var answerContainers = quizContainer.querySelectorAll(".answers");
+    var userAnswer = "";
+    var numCorrect = 0;
+
+    for(var i = 0; i < questions.length; i++) {
+        userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+        if(userAnswer === questions[i].correctAnswer) {
+            numCorrect++;
+        }
+    }
+    resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+}
+*/
+
+/*
+start-Btn.addEventListener("click", function(){
+    startTimer();
+});
+*/
+
 //start-Btn.addEventListener("click", startTimer);
 
+/*
 function submitButton () {
     document.getElementsByClassName("start-button");
     startTimer();
 };
+*/
 
+/*
 $(document).on("click", function (event) {
     event.preventDefault();
     if (event.target.textContent !== quizQuestions[currentQuestion].answer) {
@@ -144,12 +203,11 @@ $(document).on("click", function (event) {
         displayHighScores ();
         return score;
     }
-    displayQuiz ();
 });
-
+*/
+/*
 $(document).on("click", ".highscores", function (event) {
     event.preventDefault ();
     displayHighScores ();
 });
-
-//startButton.addEventListener("click", showResults);
+*/
