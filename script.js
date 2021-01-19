@@ -1,14 +1,23 @@
-var highScores = document.querySelector(".highScores");
-var timer = document.querySelector(".timer");
-var startBtn = document.querySelector(".start-Btn");
-var questions = document.querySelector("#questions");
+// variables to manipulate
+var highScores = document.getElementById("highScores");
+var timer = document.getElementById("timer");
+var startQuizDiv = document.getElementById("homepage");
+var startQuizBtn = document.getElementById("start-Btn");
+var questionsEl = document.getElementById("questions");
+var resultsEl = document.getElementById("results");
+var gameoverDiv = document.getElementById("gameover");
+var finalScoreEl = document.getElementById("finalScore");
+var highscoreInputName = document.getElementById("initials");
+var submitScoreBtn = document.getElementById("submitScore");
+var highscoreContainer = document.getElementById("highScoreContainer");
+var highscoreDiv = document.getElementById("highScorePage");
+var highscoreDisplayName = document.getElementById("highscoreInitials");
+var highscoreDisplayScore = document.getElementById("highscoreScores");
+var quizBody = document.getElementById("quiz");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
-var resultsEl = document.getElementById("result");
-var quizBody = document.getElementById("quiz");
-
 
 //array of all quiz questions
 var quizQuestions = [
@@ -84,10 +93,11 @@ function showResults (questions, quizContainer, resultsContainer) {
 submitButton.onclick = function() {
     showResults();
 }
-
+/*
 start-Btn.addEventListener("click", function(){
     startTimer();
 });
+*/
 
 
 // timer function, counting back from 25 seconds
