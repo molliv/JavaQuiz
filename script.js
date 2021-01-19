@@ -2,31 +2,42 @@ var highScores = document.querySelector(".highScores");
 var timer = document.querySelector(".timer");
 var startBtn = document.querySelector(".start-Btn");
 var questions = document.querySelector("#questions");
+var buttonA = document.getElementById("a");
+var buttonB = document.getElementById("b");
+var buttonC = document.getElementById("c");
+var buttonD = document.getElementById("d");
+var resultsEl = document.getElementById("result");
+var questionsEl = document.getElementById("questions");
+
 
 //array of all quiz questions
 var quizQuestions = [
     {
         q: "Commonly used date types DO NOT indcude:",
-        choices: ["string", "booleans", "alerts", "numbers"],
-        a: "alerts"
+        choices: ["a: string", "b: booleans", "c: alerts", "d: numbers"],
+        a: "c"
     },
     {
         q: "Arrays in JavaScript can be used to store?",
-        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        a: "all of the above"
+        choices: ["a: numbers and strings", "b: other arrays", "c: booleans", "d: all of the above"],
+        a: "d"
     },
     {
         q: "A useful tool used during development and debugging for printing content to the debugger is:",
-        choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
-        a: "console.log"
+        choices: ["a: JavaScript", "b: terminal/bash", "c: for loops", "d: console.log"],
+        a: "d"
     },
     {
         q: "What does DOM stand for?",
-        choices: ["Document Object Model", "Document Object Method", "Document Own Model"],
-        a: "Document Object Model"
+        choices: ["a: Document Object Model", "b: Document Object Method", "c: Document Own Model"],
+        a: "a"
     },
 ];
 
+varshowQuiz = function () {
+
+}
+/*
 function showQuestions (questions, quizContainer) {
     var output = []
     var answers;
@@ -48,7 +59,8 @@ function showQuestions (questions, quizContainer) {
     }
     quizContainer.innerHTML = output.join("");
 }
-
+*/
+/*
 function showResults (questions, quizContainer, resultsContainer) {
     var answerContainers = quizContainer.querySelectorAll(".answers");
     var userAnswer = "";
@@ -62,6 +74,7 @@ function showResults (questions, quizContainer, resultsContainer) {
     }
     resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
 }
+*/
 
 submitButton.onclick = function() {
     showResults();
@@ -74,15 +87,6 @@ start-Btn.addEventListener("click", function(){
 let score = 0;
 let currentQuestion = 0;
 let timeLeft = 25;
-
-//function displayHighScores () {
-
-//}
-
-//function startQuiz () {
-//    document.createElement("")
-//}
-
 
 
 // timer function, counting back from 25 seconds
@@ -110,5 +114,25 @@ function submitButton () {
     document.getElementsByClassName("start-button");
     startTimer();
 };
+
+$(document).on("click", function (event) {
+    event.preventDefault();
+    if (event.target.textContent !== quizQuestions[currentQuestion].answer) {
+        timeLeft -=3;
+    } else {
+        score += 10;
+    }
+    currentQuestion ++
+    if (currentQuestion === quizQuestions.length) {
+        displayHighScores ();
+        return score;
+    }
+    displayQuiz ();
+});
+
+$(document).on("click", ".highscores", function (event) {
+    event.preventDefault ();
+    displayHighScores ();
+});
 
 //startButton.addEventListener("click", showResults);
