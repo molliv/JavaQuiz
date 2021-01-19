@@ -7,7 +7,7 @@ var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
 var resultsEl = document.getElementById("result");
-var questionsEl = document.getElementById("questions");
+var quizBody = document.getElementById("quiz");
 
 
 //array of all quiz questions
@@ -33,6 +33,11 @@ var quizQuestions = [
         a: "a"
     },
 ];
+
+var score = 0;
+var currentQuestion = 0;
+var timeLeft = 25;
+var correct;
 
 varshowQuiz = function () {
 
@@ -84,10 +89,6 @@ start-Btn.addEventListener("click", function(){
     startTimer();
 });
 
-let score = 0;
-let currentQuestion = 0;
-let timeLeft = 25;
-
 
 // timer function, counting back from 25 seconds
 function countDown() {
@@ -108,6 +109,12 @@ function countDown() {
     }, 1000);
 }
 
+function showScore () {
+    quizBody.style.display= "none";
+    clearInterval(timeInterval);
+    highscoreInputName.value = "";
+    finalScoreEl.innerHTML = "You got " + score + " out of" + quizQuestions.length + " correct!";
+}
 //start-Btn.addEventListener("click", startTimer);
 
 function submitButton () {

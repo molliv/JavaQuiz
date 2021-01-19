@@ -14,19 +14,36 @@
         <div class="timer"> Time: 25 Seconds</section>
     </nav>
 
-    <header>
+    <header id="homepage">
         <h1>Java Quiz Game</h1>
-        <p id="questions">Try to answer the following questions within the time limit. Incorrect answers will penalize your score time by 3 seconds!</p>
-        <button class="start-Btn">Start</button>
+        <p>Try to answer the following questions within the time limit. Incorrect answers will penalize your score time by 3 seconds!</p>
+        <button class="start-Btn">Start Quiz</button>
     </header>
 
-    <div id="quiz">
+    <div id="questions">
         <p>Question Placeholder</p>
-        <button id="a">A</button>
-        <button id="b">B</button>
-        <button id="c">C</button>
-        <button id="d">D</button>
+        <button id="a" onclick="checkAnwer('a')">A</button>
+        <button id="b" onclick="checkAnwer('b')">B</button>
+        <button id="c" onclick="checkAnwer('c')">C</button>
+        <button id="d" onclick="checkAnwer('d')">D</button>
         <div id="results"></div>
+    </div>
+
+    <div id="gamover">
+        <div id="finalScore"></div>
+        <input type="text" size="40" placeholder="Enter your initials!" name="initials" id="initials">
+        <button id="submitScore">Submit Score!</button>
+    </div>
+
+    <div id="highScoreContainer">
+        <div id="highScorePage">
+            <div id="highscore-header">
+                <h3>Initials</h3>
+                <h3>Score</h3>
+            </div>
+            <div id="highscoreInitials"></div>
+            <div id="highscoreScores"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
