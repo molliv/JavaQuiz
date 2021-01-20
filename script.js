@@ -7,13 +7,13 @@ var questionsEl = document.getElementById("questions");
 var resultsEl = document.getElementById("results");
 var gameoverDiv = document.getElementById("gameover");
 var finalScoreEl = document.getElementById("finalScore");
-var highscoreInputName = document.getElementById("initials");
+var highscoreInputName = document.getElementById("userName");
 var submitScoreBtn = document.getElementById("submitScore");
 var highscoreContainer = document.getElementById("highScoreContainer");
 var highscoreDiv = document.getElementById("highScorePage");
 var highscoreDisplayName = document.getElementById("highscoreInitials");
 var highscoreDisplayScore = document.getElementById("highscoreScores");
-var quizBody = document.getElementById("quiz");
+//var quizBody = document.getElementById("quiz");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
@@ -95,11 +95,11 @@ function showScore () {
 
 submitScore.addEventListener("click", function highscore(){
     if(highscoreInputName.value === "") {
-        alert("Initials can't be blank");
+        alert("You must enter initials");
         return false;
     } else {
         var savedHighscores = JSON.parse(localStorage.getItem("savedHighScores")) || [];
-        var currentUser = highscoreInputName.valeu.trim();
+        var currentUser = highscoreInputName.value.trim();
         var crreuntHighscore = {
             name : currentUser,
             score : score
@@ -117,12 +117,12 @@ submitScore.addEventListener("click", function highscore(){
 function generateHighscores(){
     highscoreDisplayName.innerHTML = "";
     highscoreDisplayScore.innerHTML = "";
-    var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
-    for (i=0; i<highscores.length; i++){
+    var highScores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    for (i = 0; i < highScores.length; i++){
         var newNameSpan = document.createElement("li");
         var newScoreSpan = document.createElement("li");
-        newNameSpan.textContent = highscores[i].name;
-        newScoreSpan.textContent = highscores[i].score;
+        newNameSpan.textContent = highScores[i].name;
+        newScoreSpan.textContent = highScores[i].score;
         highscoreDisplayName.appendChild(newNameSpan);
         highscoreDisplayScore.appendChild(newScoreSpan);
     }
@@ -133,7 +133,7 @@ function showHighscore(){
     gameoverDiv.style.display = "none";
     highscoreContainer.style.display = "flex";
     highscoreDiv.style.display = "block";
-    generateHighscores();
+    generatehighScores();
 }
 
 function checkAnswer(answer){
@@ -145,19 +145,20 @@ function checkAnswer(answer){
         currentQuestionIndex++;
         generateQuizQuestion();
         //display in the results div that the answer is correct.
-    }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+    } else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
         currentQuestionIndex++;
         generateQuizQuestion();
         //display in the results div that the answer is wrong.
-    }else{
+    } else{
         showScore();
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    startQuizBtn.addEventListener("click", startQuiz);
-});
+//submitScoreBtn.addEventListener("click", addScore);
+
+startQuizBtn.addEventListener("click", startQuiz);
+
 
 /*
 function showResults () {
@@ -180,8 +181,6 @@ start-Btn.addEventListener("click", function(){
     startTimer();
 });
 */
-
-//start-Btn.addEventListener("click", startTimer);
 
 /*
 function submitButton () {
