@@ -10,14 +10,14 @@
 <body>
     
     <nav>
-        <button class="highscores">View Highscores!</button>
-        <div class="timer"> Time: 25 Seconds</section>
+        <button id="highscores">View Highscores!</button>
+        <div id="timer"> Time: 25 Seconds</section>
     </nav>
 
     <header id="homepage">
         <h1>Java Quiz Game</h1>
         <p>Try to answer the following questions within the time limit. Incorrect answers will penalize your score time by 3 seconds!</p>
-        <button class="start-Btn">Start Quiz</button>
+        <button id="start-Btn">Start Quiz</button>
     </header>
 
     <div id="questions">
@@ -30,19 +30,19 @@
     </div>
 
     <div id="gameover">
-        <div id="finalScore"></div>
-        <input type="text" size="40" placeholder="Enter your initials!" name="initials" id="userName">
-        <button id="submitScore">Submit Score!</button>
+        <div id="finalscore"></div>
+        <input type="text" size="40" placeholder="Enter your initials!" name="initials" id="username">
+        <button id="submitscore">Submit Score!</button>
     </div>
 
-    <div id="highScoreContainer">
-        <div id="highScorePage">
+    <div id="highscoreContainer">
+        <div id="highscorePage">
             <header id="highscore-header">
                 <h3>Initials</h3>
                 <h3>Score</h3>
             </header>
             <div id="highscoreInitials"></div>
-            <div id="highscoreScores"></div>
+            <div id="scores"></div>
         </div>
     </div>
 
