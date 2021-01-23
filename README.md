@@ -27,4 +27,4 @@ THEN I can save my initials and score
 
 ## Screenshot
 
-![Screen Shot 2021-01-21 at 4 10 56 PM](https://user-images.githubusercontent.com/74150118/105428014-51163800-5c03-11eb-8790-9dd0617258a4.png)
+![Screen Shot 2021-01-22 at 10 30 59 PM](https://user-images.githubusercontent.com/74150118/105571018-9751c100-5d01-11eb-8458-52a4b37b8a19.png)
