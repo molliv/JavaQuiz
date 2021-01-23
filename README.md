@@ -1,5 +1,8 @@
 # Javascript Quiz
 
+## Deployment
+https://molliv.github.io/JavaQuiz/
+
 ## Description
 
 This is a timed quiz, an a question is answered incorrectly time will be deducted. 

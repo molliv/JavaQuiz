@@ -3,50 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Quiz</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-
+    <title>Javascript Quiz</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
-    <nav>
-        <button id="highscores">View Highscores!</button>
-        <div id="timer"> Time: 25 Seconds</section>
-    </nav>
+    <main class="container">
 
-    <header id="homepage">
-        <h1>Java Quiz Game</h1>
-        <p>Try to answer the following questions within the time limit. Incorrect answers will penalize your score time by 3 seconds!</p>
-        <button id="start-Btn">Start Quiz</button>
-    </header>
+        <header id="homepage">
+            <h1>Javascript Quiz Game</h1>
+            <p>Try to answer the following questions within the time limit. Incorrect answers will penalize your score time by 3 seconds!</p>
+        <button id="startbtn">Start Quiz!</button>
+        </header>
 
-    <div id="questions">
-        <p>Question Placeholder</p>
-        <button id="a" onclick="checkAnwer('a')">A</button>
-        <button id="b" onclick="checkAnwer('b')">B</button>
-        <button id="c" onclick="checkAnwer('c')">C</button>
-        <button id="d" onclick="checkAnwer('d')">D</button>
-        <div id="results"></div>
-    </div>
-
-    <div id="gameover">
-        <div id="finalscore"></div>
-        <input type="text" size="40" placeholder="Enter your initials!" name="initials" id="username">
-        <button id="submitscore">Submit Score!</button>
-    </div>
-
-    <div id="highscoreContainer">
-        <div id="highscorePage">
-            <header id="highscore-header">
-                <h3>Initials</h3>
-                <h3>Score</h3>
-            </header>
-            <div id="highscoreInitials"></div>
-            <div id="scores"></div>
-        </div>
-    </div>
+        <section id="quiz">
+            <div id="timer">Time left: </div>
+                <div id="questions"><p>Question Placeholder</p></div>
+                    <button id="a" onclick="checkAnswer('a')">A</button>
+                    <button id="b" onclick="checkAnswer('b')">B</button>
+                    <button id="c" onclick="checkAnswer('c')">C</button>
+                    <button id="d" onclick="checkAnswer('d')">D</button>
+                <div id="result"></div>
+        </section>
+        <section id="gameover">
+            <div id="finalscore"></div>
+            <input type="text" size = "30" placeholder="Enter initials for highscore" name="intials" id="initials"/>
+            <button id="submitScore">Submit Score</button>
+        </section>
+        <section id=highscoreContainer>
+            <div id="highscorePage">
+                <header id="highscore-header">
+                    <h3>Initials</h3>
+                    <h3>Score</h3>
+                </header>
+                <div id = "highscore-initials"></div>
+                <div id = "highscore-score"></div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>
