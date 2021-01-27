@@ -36,6 +36,7 @@ body {
 #quiz {
     display: none;
     float: center;
+    text-align: center;
 }
 
 #timer{
@@ -73,9 +74,8 @@ button {
     color: darkblue;
     text-align: center;
     font-size: 15px;
-    padding: 20px;
     width: 150px;
-    margin-top: 3px;
+    padding: 10px;
 }
 
 
@@ -148,6 +148,10 @@ button {
     font-size: x-large;
     font-family: sans-serif;
     font-weight: bold;
+}
+
+#playAgain{
+    text-align: center;
 }
 
 li{

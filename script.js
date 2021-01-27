@@ -13,6 +13,7 @@ var hsContainer = document.getElementById("highscoreContainer");
 var hsDiv = document.getElementById("highscorePage");
 var hsName = document.getElementById("highscore-initials");
 var hsScore = document.getElementById("highscore-score");
+var plaAgain = document.getElementById("playAgain");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
@@ -174,6 +175,16 @@ function checkAnswer(answer){
     }else{
         displayScore();
     }
+}
+
+// function replays the quiz and sets everything back to 0
+function replay () {
+    gameoverDiv.style.display = "none";
+    hsContainer.style.display = "none";
+    quizDiv.style.display = "flex";
+    currentQuestionIndex = 0
+    counter = 25;
+    score = 0;
 }
 
 // This button starts the quiz!
